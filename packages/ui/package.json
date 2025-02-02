@@ -1,0 +1,45 @@
+{
+  "name": "@script-master-sandbox/ui",
+  "private": true,
+  "homepage": ".",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "@atlaskit/button": "^20.3.10",
+    "@atlaskit/css-reset": "^6.11.4",
+    "@atlaskit/dropdown-menu": "^12.24.1",
+    "@atlaskit/flag": "^15.8.14",
+    "@atlaskit/heading": "^4.0.1",
+    "@atlaskit/icon": "^23.4.1",
+    "@atlaskit/inline-message": "^13.0.2",
+    "@atlaskit/lozenge": "^11.12.7",
+    "@atlaskit/menu": "^2.13.8",
+    "@atlaskit/modal-dialog": "^12.19.2",
+    "@atlaskit/primitives": "^13.3.8",
+    "@atlaskit/progress-bar": "^3.0.2",
+    "@atlaskit/section-message": "^6.8.3",
+    "@atlaskit/skeleton": "^1.0.3",
+    "@atlaskit/spinner": "^16.3.6",
+    "@atlaskit/tag": "^12.6.10",
+    "@atlaskit/textarea": "^5.7.3",
+    "@atlaskit/textfield": "^6.7.2",
+    "@atlaskit/toggle": "^14.0.3",
+    "@atlaskit/tokens": "^3.1.0",
+    "@atlaskit/tooltip": "^19.0.3",
+    "@forge/bridge": "^4.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11",
+    "vite-plugin-eslint": "^1.8.1"
+  }
+}
