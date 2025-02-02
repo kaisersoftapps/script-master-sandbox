@@ -1,0 +1,119 @@
+modules:
+  jira:adminPage:
+    - key: secure-forge-script-master-admin-page
+      resource: ui
+      title: "Script Master: Secured"
+      icon: resource:ui;secured-forge-script-master-logo.png
+      resolver:
+        function: resolver-function
+    - key: secure-forge-script-master-configure-page
+      resource: ui
+      title: "Script Master: Secured"
+      icon: resource:ui;secured-forge-script-master-logo.png
+      resolver:
+        function: resolver-function
+      useAsConfig: true
+    - key: secure-forge-script-master-get-started-page
+      resource: ui
+      title: "Script Master: Secured"
+      icon: resource:ui;secured-forge-script-master-logo.png
+      resolver:
+        function: resolver-function
+      useAsGetStarted: true
+  confluence:globalSettings:
+    - key: secure-forge-script-master-conf-admin-page
+      resource: ui
+      title: "Script Master: Secured"
+      icon: resource:ui;secured-forge-script-master-logo.png
+      resolver:
+        function: resolver-function
+    - key: secure-forge-script-master-conf-configure-page
+      resource: ui
+      title: "Script Master: Secured"
+      icon: resource:ui;secured-forge-script-master-logo.png
+      resolver:
+        function: resolver-function
+      useAsConfig: true
+    - key: secure-forge-script-master-conf-get-started-page
+      resource: ui
+      title: "Script Master: Secured"
+      icon: resource:ui;secured-forge-script-master-logo.png
+      resolver:
+        function: resolver-function
+      useAsGetStarted: true
+  webtrigger:
+    - key: secure-forge-script-master-web-trigger
+      function: webtrigger-function
+  function:
+    - key: resolver-function
+      handler: index.resolver
+    - key: webtrigger-function
+      handler: index.webtrigger
+resources:
+  - key: ui
+    path: ../ui/build
+    tunnel:
+      port: 3030
+permissions:
+  scopes:
+    # jira scopes
+    - read:jira-user # View user information in Jira that the user has access to, including usernames, email addresses, and avatars.
+    - read:jira-work # Read Jira project and issue data, search for issues and objects associated with issues like attachments and worklogs.
+    - write:jira-work # Create and edit issues in Jira, post comments as the user, create worklogs, and delete issues.
+    - manage:jira-project # Create and edit project settings and create new project-level objects (for example, versions and components).
+    - manage:jira-configuration # Take Jira administration actions (for example, create projects and custom fields, view workflows, and manage issue link types).
+    - manage:jira-webhook # Fetch, register, refresh, and delete dynamically declared Jira webhooks.
+    - read:servicedesk-request # View Jira Service Desk request data
+    - write:servicedesk-request # Create and manage Jira Service Desk requests
+    - manage:servicedesk-customer # Manage Jira Service Desk customers and organizations
+    # conf scopes
+    - write:confluence-content # Permits the creation of pages, blogs, comments, and questions.
+    - write:page:confluence # Special scope for page creation
+    - read:confluence-space.summary # Read a summary of space information without expansions.
+    - write:confluence-space # Create, update, and delete space information.
+    - write:confluence-file # Upload attachments.
+    - read:confluence-props # Read content properties.
+    - write:confluence-props # Write content properties.
+    - manage:confluence-configuration # Manage global settings.
+    - read:confluence-content.all # Read all content, including content body (expansions permitted). Note, APIs using this scope may also return data allowed by read:confluence-space.summary. However, this scope is not a substitute for read:confluence-space.summary.
+    - read:confluence-content.summary # Read a summary of the content, which is the content without expansions. Note, APIs using this scope may also return data allowed by read:confluence-space.summary. However, this scope is not a substitute for read:confluence-space.summary.
+    - search:confluence # Search Confluence. Note, APIs using this scope may also return data allowed by read:confluence-space.summary and read:confluence-content.summary. However, this scope is not a substitute for read:confluence-space.summary or read:confluence-content.summary.
+    - read:confluence-content.permission # View content permission in Confluence.
+    - read:confluence-user # View user information in Confluence that you have access to, including usernames, email addresses, and profile pictures.
+    - read:confluence-groups # Permits retrieval of user groups.
+    - write:confluence-groups # Permits creation, removal, and update of user groups.
+    - readonly:content.attachment:confluence # Download attachments of a Confluence page or blogpost that you have access to.
+    - read:space:confluence # To search for spaces
+    - read:page:confluence # To get exact page
+    - delete:page:confluence # Delete a page by id https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-page/#api-pages-id-delete
+    # shared scopes
+    - storage:app
+  content:
+    scripts:
+      - unsafe-inline
+      - unsafe-hashes
+      - unsafe-eval
+    styles:
+      - unsafe-inline
+  external:
+    images:
+      - "*"
+    scripts:
+      - "*"
+    styles:
+      - "*"
+    fonts:
+      - "*"
+    frames:
+      - "*"
+    media:
+      - "*"
+    fetch:
+      backend:
+        - "*"
+      client:
+        - "*"
+app:
+  id: ari:cloud:ecosystem::app/f8936687-4490-4435-8f2d-d0bf76592635
+  runtime:
+    name: nodejs22.x
