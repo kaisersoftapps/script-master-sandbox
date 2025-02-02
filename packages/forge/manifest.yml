@@ -1,48 +1,48 @@
 modules:
   jira:adminPage:
-    - key: secure-forge-script-master-admin-page
+    - key: script-master-sandbox-admin-page
       resource: ui
-      title: "Script Master: Secured"
+      title: "Script Master: Sandbox"
       icon: resource:ui;secured-forge-script-master-logo.png
       resolver:
         function: resolver-function
-    - key: secure-forge-script-master-configure-page
+    - key: script-master-sandbox-configure-page
       resource: ui
-      title: "Script Master: Secured"
+      title: "Script Master: Sandbox"
       icon: resource:ui;secured-forge-script-master-logo.png
       resolver:
         function: resolver-function
       useAsConfig: true
-    - key: secure-forge-script-master-get-started-page
+    - key: script-master-sandbox-get-started-page
       resource: ui
-      title: "Script Master: Secured"
+      title: "Script Master: Sandbox"
       icon: resource:ui;secured-forge-script-master-logo.png
       resolver:
         function: resolver-function
       useAsGetStarted: true
   confluence:globalSettings:
-    - key: secure-forge-script-master-conf-admin-page
+    - key: script-master-sandbox-conf-admin-page
       resource: ui
-      title: "Script Master: Secured"
+      title: "Script Master: Sandbox"
       icon: resource:ui;secured-forge-script-master-logo.png
       resolver:
         function: resolver-function
-    - key: secure-forge-script-master-conf-configure-page
+    - key: script-master-sandbox-conf-configure-page
       resource: ui
-      title: "Script Master: Secured"
+      title: "Script Master: Sandbox"
       icon: resource:ui;secured-forge-script-master-logo.png
       resolver:
         function: resolver-function
       useAsConfig: true
-    - key: secure-forge-script-master-conf-get-started-page
+    - key: script-master-sandbox-conf-get-started-page
       resource: ui
-      title: "Script Master: Secured"
+      title: "Script Master: Sandbox"
       icon: resource:ui;secured-forge-script-master-logo.png
       resolver:
         function: resolver-function
       useAsGetStarted: true
   webtrigger:
-    - key: secure-forge-script-master-web-trigger
+    - key: script-master-sandbox-web-trigger
       function: webtrigger-function
   function:
     - key: resolver-function
@@ -114,6 +114,6 @@ permissions:
       client:
         - "*"
 app:
-  id: ari:cloud:ecosystem::app/f8936687-4490-4435-8f2d-d0bf76592635
+  id: ari:cloud:ecosystem::app/32d0b242-3b4a-4c0c-a0b6-0b44e8280724
   runtime:
     name: nodejs22.x

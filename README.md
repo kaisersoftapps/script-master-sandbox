@@ -28,7 +28,7 @@ The installation and configuration process consists of four steps:
 2. Clone this repository.  
 3. Install the latest version of `yarn` and enable `corepack` by running `npm install -g yarn && corepack enable`. For more details, see the [official documentation](https://yarnpkg.com/corepack).
 4. Install all project dependencies using `yarn install`.  
-5. Navigate to the `./forge/` subfolder in your terminal and run `forge register` to register a new app in the [Atlassian Developer Console](https://developer.atlassian.com/console/myapps/). This app supports multiple applications and is compatible with Jira and Cloud.
+5. Navigate to the `./forge/` subfolder in your terminal and run `forge register script-master-sandbox` to register a new app in the [Atlassian Developer Console](https://developer.atlassian.com/console/myapps/). This app supports multiple applications and is compatible with Jira and Cloud.
 
 ### 2. Install the App
 
