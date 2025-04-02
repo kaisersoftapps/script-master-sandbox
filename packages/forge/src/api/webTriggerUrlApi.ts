@@ -12,7 +12,7 @@ export const getWebTriggerUrl = async (): Promise<{ data?: string; error?: strin
       await saveConfig(config);
     }
 
-    const webTriggerUrl = await webTrigger.getUrl('secure-forge-script-master-web-trigger');
+    const webTriggerUrl = await webTrigger.getUrl('script-master-sandbox-web-trigger');
     const fullUrl = createFullUrl(webTriggerUrl, config);
 
     return await Promise.resolve({ data: fullUrl });
