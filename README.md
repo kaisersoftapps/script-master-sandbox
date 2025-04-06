@@ -31,8 +31,11 @@ The installation and configuration process consists of four steps:
    npm install -g yarn && corepack enable
    ```
    For more details, see the [official documentation](https://yarnpkg.com/corepack).
-5. Install all project dependencies using `yarn install`.  
-6. Navigate to the `./forge/` subfolder in your terminal and run:
+5. Install all project dependencies using
+   ```bash
+   yarn install
+   ```  
+7. Navigate to the `./forge/` subfolder in your terminal and run:
    ```bash
    forge register script-master-sandbox
    ```
