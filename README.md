@@ -30,19 +30,22 @@ got clone https://github.com/kaisersoftapps/script-master-sandbox.git
 ### 1. Register the App
 
 1. Complete the prerequisites for Forge apps by following Atlassian's [Getting Started Guide](https://developer.atlassian.com/platform/forge/getting-started/).  
-   - Ensure Node.js and Forge CLI are installed globally.  
-   - Log in to Forge using `forge login` with an Atlassian API token.  
-2. Clone this repository.  
-3. Install the latest version of `yarn` and enable `corepack` by running
+   - Ensure Node.js and Forge CLI are installed globally.
+2. Install the latest version of `yarn` and enable `corepack` by running
    ```bash
    npm install -g yarn && corepack enable
    ```
    For more details, see the [official documentation](https://yarnpkg.com/corepack).
-5. Install all project dependencies using
+3. Install all project dependencies using
    ```bash
    yarn install
-   ```  
-7. Navigate to the `./forge/` subfolder in your terminal and run:
+   ```
+4. Log in to Forge using
+   ```bash
+   forge login
+   ```
+   with an Atlassian API token.
+5. Navigate to the `./forge/` subfolder in your terminal and run:
    ```bash
    forge register script-master-sandbox
    ```
@@ -55,12 +58,12 @@ got clone https://github.com/kaisersoftapps/script-master-sandbox.git
    yarn deploy -e production
    ```
    from the project root.  
-3. Install the app to your cloud site using:
+2. Install the app to your cloud site using:
    ```bash
    yarn forge-install --site NAME.atlassian.net --product jira --non-interactive -e production
    ```
    Ensure you have **Administer permissions** on the `NAME.atlassian.net` site where you want to install the app.  
-4. Once deployed, the app will be available in the **Manage apps** section of your cloud application.
+3. Once deployed, the app will be available in the **Manage apps** section of your cloud application.
 
 ### 3. Generate a Secure Token
 
