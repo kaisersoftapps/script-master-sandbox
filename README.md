@@ -24,7 +24,7 @@ The installation and configuration process consists of four steps:
 ### 0. Clone this repository
 
 ```bash
-got clone https://github.com/kaisersoftapps/script-master-sandbox.git
+git clone https://github.com/kaisersoftapps/script-master-sandbox.git
 ```
 
 ### 1. Register the App
