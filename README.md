@@ -14,11 +14,18 @@ This free app creates an isolated environment for executing all Script Master ba
 
 ## Installation and Configuration
 
-The installation and configuration process consists of four steps:  
+The installation and configuration process consists of four steps:
+0. **Clone this repository** 
 1. **Register this app as your own Forge app.**  
 2. **Install the app in your environment alongside Script Master.**  
 3. **Generate a secure access token.**  
 4. **Apply the secure token to Script Master.**
+
+### 0. Clone this repository
+
+```bash
+got clone https://github.com/kaisersoftapps/script-master-sandbox.git
+```
 
 ### 1. Register the App
 
