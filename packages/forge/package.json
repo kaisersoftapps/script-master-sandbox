@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "forge tunnel",
+    "forge-register": "forge register",
     "forge-deploy": "forge deploy",
     "forge-install": "forge install"
   },

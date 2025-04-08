@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "yarn workspaces foreach -A -p -v -i run dev",
     "build": "yarn workspace @script-master-sandbox/ui build",
+    "forge-register": "yarn workspace @script-master-sandbox/forge forge-register",
     "forge-deploy": "yarn build && yarn workspace @script-master-sandbox/forge forge-deploy",
     "forge-install": "yarn workspace @script-master-sandbox/forge forge-install"
   },
