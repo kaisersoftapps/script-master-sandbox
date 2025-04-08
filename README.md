@@ -15,19 +15,25 @@ This free app creates an isolated environment for executing all Script Master ba
 ## Installation and Configuration
 
 The installation and configuration process consists of four steps:
-0. **Clone this repository** 
-1. **Register this app as your own Forge app.**  
-2. **Install the app in your environment alongside Script Master.**  
-3. **Generate a secure access token.**  
-4. **Apply the secure token to Script Master.**
+0. **Clone the Repository** 
+1. **Prepare Your Environment** 
+2. **Register this app as your own Forge app.**  
+3. **Install the app in your environment alongside Script Master.**  
+4. **Generate a secure access token.**  
+5. **Apply the secure token to Script Master.**
 
-### 0. Clone this repository
+### 0. Clone the Repository
+
+Start by cloning this repository to your local machine.
 
 ```bash
 git clone https://github.com/kaisersoftapps/script-master-sandbox.git
 ```
 
-### 1. Register the App
+### 1. Prepare Your Environment
+
+> [!TIP]
+> Skip this step if you've already created a Forge app for this environment.
 
 1. Complete the prerequisites for Forge apps by following Atlassian's [Getting Started Guide](https://developer.atlassian.com/platform/forge/getting-started/).  
    - Ensure Node.js and Forge CLI are installed globally.
@@ -36,26 +42,29 @@ git clone https://github.com/kaisersoftapps/script-master-sandbox.git
    npm install -g yarn && corepack enable
    ```
    For more details, see the [official documentation](https://yarnpkg.com/corepack).
-3. Install all project dependencies using
-   ```bash
-   yarn install
-   ```
-4. Log in to Forge using
+3. Log in to Forge using
    ```bash
    forge login
    ```
    with an Atlassian API token.
-5. Navigate to the `./forge/` subfolder in your terminal and run:
+
+
+### 2. Register the App
+
+1. Install all project dependencies using
    ```bash
-   forge register script-master-sandbox
+   yarn install
    ```
-   to register a new app in the [Atlassian Developer Console](https://developer.atlassian.com/console/myapps/). This app supports multiple applications and is compatible with Jira and Cloud.
+2. Register a new app in the [Atlassian Developer Console](https://developer.atlassian.com/console/myapps/). This app supports multiple applications and is compatible with Jira and Cloud.
+   ```bash
+   yarn forge-register script-master-sandbox
+   ```
 
 ### 2. Install the App
 
 1. Build and deploy the app artifact by running
    ```bash
-   yarn deploy -e production
+   yarn forge-deploy -e production
    ```
    from the project root.  
 2. Install the app to your cloud site using:
