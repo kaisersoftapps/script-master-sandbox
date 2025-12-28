@@ -9,8 +9,8 @@
     "forge-install": "forge install"
   },
   "dependencies": {
-    "@forge/api": "^5.1.1",
-    "@forge/resolver": "1.6.9",
-    "uuid": "^11.1.0"
+    "@forge/api": "^6.4.2",
+    "@forge/resolver": "1.7.1",
+    "uuid": "^13.0.0"
   }
 }

@@ -1,7 +1,7 @@
 import { IconButton } from '@atlaskit/button/new';
 import DropdownMenu, { DropdownItem, DropdownItemGroup } from '@atlaskit/dropdown-menu';
-import CopyIcon from '@atlaskit/icon/glyph/copy';
-import MoreIcon from '@atlaskit/icon/glyph/more';
+import CopyIcon from '@atlaskit/icon/core/copy';
+import MoreIcon from '@atlaskit/icon/core/show-more-horizontal';
 import { Box, Flex, Text, xcss } from '@atlaskit/primitives';
 import ProgressBar from '@atlaskit/progress-bar';
 import SectionMessage, { SectionMessageAction } from '@atlaskit/section-message';
@@ -71,7 +71,7 @@ export const App = () => {
         </p>
       </SectionMessage>
 
-      {!!error && (
+      {error && (
         <SectionMessage title="Error during secured endpoint creation" appearance="error">
           <p>{error}</p>
         </SectionMessage>
@@ -137,7 +137,7 @@ export const App = () => {
           </Flex>
         </Flex>
 
-        {!!isLoading && (
+        {isLoading && (
           <Skeleton width="100%" height="50px" borderRadius="5px" />
         )}
         {!isLoading && (

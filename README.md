@@ -14,15 +14,14 @@ This free app creates an isolated environment for executing all Script Master ba
 
 ## Installation and Configuration
 
-The installation and configuration process consists of four steps:
-0. **Clone the Repository** 
-1. **Prepare Your Environment** 
-2. **Register this app as your own Forge app.**  
-3. **Install the app in your environment alongside Script Master.**  
-4. **Generate a secure access token.**  
-5. **Apply the secure token to Script Master.**
+The installation and configuration process consists of five steps:
+1. **Clone the Repository** 
+2. **Prepare Your Environment** 
+3. **Register this app as your own Forge app**  
+4. **Install the app in your environment alongside Script Master**  
+5. **Generate a secure access token and apply it to Script Master**
 
-### 0. Clone the Repository
+### 1. Clone the Repository
 
 Start by cloning this repository to your local machine.
 
@@ -30,7 +29,7 @@ Start by cloning this repository to your local machine.
 git clone https://github.com/kaisersoftapps/script-master-sandbox.git
 ```
 
-### 1. Prepare Your Environment
+### 2. Prepare Your Environment
 
 > [!TIP]
 > Skip this step if you've already created a Forge app for this environment.
@@ -48,8 +47,7 @@ git clone https://github.com/kaisersoftapps/script-master-sandbox.git
    ```
    with an Atlassian API token.
 
-
-### 2. Register the App
+### 3. Register the App
 
 1. Install all project dependencies using
    ```bash
@@ -60,7 +58,7 @@ git clone https://github.com/kaisersoftapps/script-master-sandbox.git
    yarn forge-register script-master-sandbox
    ```
 
-### 2. Install the App
+### 4. Install the App
 
 1. Build and deploy the app artifact by running
    ```bash
@@ -74,17 +72,14 @@ git clone https://github.com/kaisersoftapps/script-master-sandbox.git
    Ensure you have **Administer permissions** on the `NAME.atlassian.net` site where you want to install the app.  
 3. Once deployed, the app will be available in the **Manage apps** section of your cloud application.
 
-### 3. Generate a Secure Token
+### 5. Generate and Apply Secure Token
 
 1. Navigate to **Admin settings** → **Apps** → **Script Master: Sandbox**.  
 2. Copy the auto-generated "Token".
+3. Go to **Admin settings** → **Apps** → **Script Master** → **⚙ Settings**.
+4. Paste the token and verify that the execution status changes to "Secured Execution".
 
-### 4. Apply the Token to Script Master
-
-1. Go to **Admin settings** → **Apps** → **Script Master** → **⚙ Settings**.  
-2. Paste the token and verify that the execution status changes to "Secured Execution".
-
-Once completed, all back-end scripts from Web Triggers, Scheduled Jobs, Custom Fields, Workflow Extensions, and other nack-end modules will execute securely within the secured and isolated environment provided by the **Script Master: Sandbox** app.
+Once completed, all back-end scripts from Web Triggers, Scheduled Jobs, Custom Fields, Workflow Extensions, and other back-end modules will execute securely within the secured and isolated environment provided by the **Script Master: Sandbox** app.
 
 ## Troubleshooting and Support
 
