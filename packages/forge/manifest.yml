@@ -5,14 +5,14 @@ modules:
     # Main admin page for Script Master Sandbox
     - key: script-master-sandbox-admin-page
       resource: ui
-      title: "Script Master: Sandbox"
+      title: "Script Master: Companion App"
       icon: resource:ui;secured-forge-script-master-logo.png
       resolver:
         function: resolver-function
     # Configuration page - used for app setup and configuration
     - key: script-master-sandbox-configure-page
       resource: ui
-      title: "Script Master: Sandbox"
+      title: "Script Master: Companion App"
       icon: resource:ui;secured-forge-script-master-logo.png
       resolver:
         function: resolver-function
@@ -20,7 +20,7 @@ modules:
     # Get started page - shown to users when first installing the app
     - key: script-master-sandbox-get-started-page
       resource: ui
-      title: "Script Master: Sandbox"
+      title: "Script Master: Companion App"
       icon: resource:ui;secured-forge-script-master-logo.png
       resolver:
         function: resolver-function
@@ -30,14 +30,14 @@ modules:
     # Main admin page for Confluence
     - key: script-master-sandbox-conf-admin-page
       resource: ui
-      title: "Script Master: Sandbox"
+      title: "Script Master: Companion App"
       icon: resource:ui;secured-forge-script-master-logo.png
       resolver:
         function: resolver-function
     # Confluence configuration page
     - key: script-master-sandbox-conf-configure-page
       resource: ui
-      title: "Script Master: Sandbox"
+      title: "Script Master: Companion App"
       icon: resource:ui;secured-forge-script-master-logo.png
       resolver:
         function: resolver-function
@@ -45,7 +45,7 @@ modules:
     # Confluence get started page
     - key: script-master-sandbox-conf-get-started-page
       resource: ui
-      title: "Script Master: Sandbox"
+      title: "Script Master: Companion App"
       icon: resource:ui;secured-forge-script-master-logo.png
       resolver:
         function: resolver-function

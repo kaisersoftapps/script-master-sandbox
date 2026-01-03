@@ -48,7 +48,7 @@ export const App = () => {
       >
         <p>
           Important: This is not a standalone app.
-          "Script Master: Sandbox" is a feature within Script Master for Jira and Confluence Cloud and should only be installed if the main app is already installed.
+          "Script Master: Companion App" is a feature within Script Master for Jira and Confluence Cloud and should only be installed if the main app is already installed.
           It cannot be used without the main app.
           The Script Master app allows to run custom scripts on the Forge backend, offering two execution modes:
         </p>

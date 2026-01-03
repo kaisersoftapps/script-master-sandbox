@@ -1,8 +1,8 @@
-# Script Master: Sandbox
+# Script Master: Companion App
 
 ## Overview
 
-"Script Master: Sandbox" is a companion app for [Script Master for Jira](https://marketplace.atlassian.com/apps/1233958/script-master-for-jira?hosting=cloud) and [Script Master for Confluence](https://marketplace.atlassian.com/apps/1234082/script-master-for-confluence?hosting=cloud). This app enables secure script execution for Forge back-end functions.
+"Script Master: Companion App" is a companion app for [Script Master for Jira](https://marketplace.atlassian.com/apps/1233958/script-master-for-jira?hosting=cloud) and [Script Master for Confluence](https://marketplace.atlassian.com/apps/1234082/script-master-for-confluence?hosting=cloud). This app enables secure script execution for Forge back-end functions.
 
 ## The Problem
 
@@ -55,7 +55,7 @@ git clone https://github.com/kaisersoftapps/script-master-sandbox.git
    ```
 2. Register a new app in the [Atlassian Developer Console](https://developer.atlassian.com/console/myapps/). This app supports multiple applications and is compatible with Jira and Cloud.
    ```bash
-   yarn forge-register script-master-sandbox
+   yarn forge-register script-master-companion-app
    ```
 
 ### 4. Install the App
@@ -74,12 +74,12 @@ git clone https://github.com/kaisersoftapps/script-master-sandbox.git
 
 ### 5. Generate and Apply Secure Token
 
-1. Navigate to **Admin settings** → **Apps** → **Script Master: Sandbox**.  
+1. Navigate to **Admin settings** → **Apps** → **Script Master: Companion App**.  
 2. Copy the auto-generated "Token".
 3. Go to **Admin settings** → **Apps** → **Script Master** → **⚙ Settings**.
 4. Paste the token and verify that the execution status changes to "Secured Execution".
 
-Once completed, all back-end scripts from Web Triggers, Scheduled Jobs, Custom Fields, Workflow Extensions, and other back-end modules will execute securely within the secured and isolated environment provided by the **Script Master: Sandbox** app.
+Once completed, all back-end scripts from Web Triggers, Scheduled Jobs, Custom Fields, Workflow Extensions, and other back-end modules will execute securely within the secured and isolated environment provided by the **Script Master: Companion App** app.
 
 ## Troubleshooting and Support
 
