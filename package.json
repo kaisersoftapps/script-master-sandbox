@@ -3,10 +3,11 @@
   "license": "MIT",
   "private": true,
   "type": "module",
-  "packageManager": "yarn@4.12.0",
+  "packageManager": "yarn@4.17.0",
   "scripts": {
     "dev": "yarn workspaces foreach -A -p -v -i run dev",
-    "build": "yarn workspace @script-master-sandbox/ui build",
+    "build": "yarn workspaces foreach -A -p -v -i run build",
+    "lint": "yarn workspaces foreach -A -p -v -i run lint",
     "forge-register": "yarn workspace @script-master-sandbox/forge forge-register",
     "forge-deploy": "yarn build && yarn workspace @script-master-sandbox/forge forge-deploy",
     "forge-install": "yarn workspace @script-master-sandbox/forge forge-install"
@@ -17,12 +18,12 @@
     ]
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@stylistic/eslint-plugin": "^5.6.1",
-    "@types/node": "^25.0.3",
-    "eslint": "^9.39.2",
-    "knip": "^5.76.1",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.0"
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@types/node": "^25.9.3",
+    "eslint": "^10.5.0",
+    "knip": "^6.16.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.0"
   }
 }

@@ -1,42 +1,63 @@
-import { IconButton } from '@atlaskit/button/new';
+import Button, { IconButton } from '@atlaskit/button/new';
 import DropdownMenu, { DropdownItem, DropdownItemGroup } from '@atlaskit/dropdown-menu';
 import CopyIcon from '@atlaskit/icon/core/copy';
 import MoreIcon from '@atlaskit/icon/core/show-more-horizontal';
+import Modal, { ModalBody, ModalFooter, ModalHeader, ModalTitle, ModalTransition } from '@atlaskit/modal-dialog';
 import { Box, Flex, Text, xcss } from '@atlaskit/primitives';
 import ProgressBar from '@atlaskit/progress-bar';
 import SectionMessage, { SectionMessageAction } from '@atlaskit/section-message';
 import Skeleton from '@atlaskit/skeleton';
 import TextArea from '@atlaskit/textarea';
 import { router, showFlag } from '@forge/bridge';
+import { useState } from 'react';
 import { useWeTriggerUrl } from './model/useWeTriggerUrl';
 
 export const App = () => {
   const { weTriggerUrl, isLoading, error, recreate } = useWeTriggerUrl();
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
   const gotoDocumentation = async () => {
     await router.open('https://kaisersoftapps.github.io/docs/docs/script-master/secured-script-execution');
   };
 
   const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(weTriggerUrl ?? '');
-
-    showFlag({
-      id: 'success-flag',
-      type: 'success',
-      title: 'Link Copied!',
-      description: 'The URL has been successfully copied to your clipboard',
-      isAutoDismiss: true,
-    });
+    try {
+      await navigator.clipboard.writeText(weTriggerUrl ?? '');
+      showFlag({
+        id: 'success-flag',
+        type: 'success',
+        title: 'Link Copied!',
+        description: 'The URL has been successfully copied to your clipboard',
+        isAutoDismiss: true,
+      });
+    } catch {
+      showFlag({
+        id: 'copy-error-flag',
+        type: 'error',
+        title: 'Copy Failed',
+        description: 'Unable to copy to clipboard. Please select and copy the URL manually.',
+        isAutoDismiss: true,
+      });
+    }
   };
+
+  const handleRecreateConfirm = async () => {
+    setIsConfirmOpen(false);
+    await recreate();
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  const containerStyles = xcss({ paddingLeft: 'space.100', paddingRight: 'space.100' });
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  const tokenLabelStyles = xcss({ minWidth: '100px' });
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  const tokenValueStyles = xcss({ width: '100%' });
 
   return (
     <Flex
       direction="column"
       gap="space.200"
-      xcss={xcss({
-        paddingLeft: 'space.100',
-        paddingRight: 'space.100',
-      })}
+      xcss={containerStyles}
     >
       <SectionMessage
         title="Ensuring Secure Script Execution in Forge"
@@ -87,16 +108,12 @@ export const App = () => {
           gap="space.100"
         >
           <Box
-            xcss={xcss({
-              minWidth: '100px',
-            })}
+            xcss={tokenLabelStyles}
           >
             <Text weight="bold" size="large">Token:</Text>
           </Box>
           <Box
-            xcss={xcss({
-              width: '100%',
-            })}
+            xcss={tokenValueStyles}
           >
             {isLoading && (
               <ProgressBar ariaLabel="Loading..." isIndeterminate />
@@ -121,7 +138,7 @@ export const App = () => {
               <DropdownItemGroup>
                 <DropdownItem
                   isDisabled={isLoading}
-                  onClick={recreate}
+                  onClick={() => { setIsConfirmOpen(true); }}
                 >
                   Recreate
                 </DropdownItem>
@@ -147,7 +164,7 @@ export const App = () => {
             <TextArea
               isDisabled={true}
               minimumRows={2}
-              defaultValue={weTriggerUrl}
+              value={weTriggerUrl ?? ''}
             />
             <Text size="small" color="color.text.subtlest">
               Use generated token in Script Master configuration page to use this secured endpoint for code execution
@@ -155,6 +172,30 @@ export const App = () => {
           </Flex>
         )}
       </Flex>
+
+      <ModalTransition>
+        {isConfirmOpen && (
+          <Modal onClose={() => { setIsConfirmOpen(false); }}>
+            <ModalHeader hasCloseButton>
+              <ModalTitle appearance="warning">Recreate Token?</ModalTitle>
+            </ModalHeader>
+            <ModalBody>
+              <p>
+                This will generate a new token and invalidate the existing one.
+                Any Script Master configuration using the current token will stop working until you update it with the new token.
+              </p>
+            </ModalBody>
+            <ModalFooter>
+              <Button appearance="subtle" onClick={() => { setIsConfirmOpen(false); }}>
+                Cancel
+              </Button>
+              <Button appearance="warning" onClick={handleRecreateConfirm}>
+                Recreate
+              </Button>
+            </ModalFooter>
+          </Modal>
+        )}
+      </ModalTransition>
     </Flex>
   );
 };

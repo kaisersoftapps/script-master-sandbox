@@ -1,3 +1,4 @@
+import { API_VERSION } from '../model/const';
 import { runScript } from '../model/runScript';
 import { getConfig } from './configApi';
 
@@ -17,17 +18,12 @@ interface WebTriggerResponse {
   statusText?: string;
 }
 
-const getQuickResponse = async (statusCode: number, statusText: string): Promise<WebTriggerResponse> => {
-  return Promise.resolve({
-    body: JSON.stringify({
-      statusCode,
-      statusText,
-    }),
-    headers: { 'Content-Type': ['application/json'] },
-    statusCode,
-    statusText,
-  });
-};
+const getQuickResponse = (statusCode: number, statusText: string): WebTriggerResponse => ({
+  body: JSON.stringify({ statusCode, statusText }),
+  headers: { 'Content-Type': ['application/json'] },
+  statusCode,
+  statusText,
+});
 
 /*
   Expected requests:
@@ -37,6 +33,9 @@ const getQuickResponse = async (statusCode: number, statusText: string): Promise
 export const webtrigger = async (request: WebTriggerRequest): Promise<WebTriggerResponse> => {
   if (!request.queryParameters.version) {
     return getQuickResponse(400, 'Missing "version" query parameter');
+  }
+  if (request.queryParameters.version[0] !== API_VERSION) {
+    return getQuickResponse(400, `Unsupported API version. Expected: ${API_VERSION}`);
   }
   if (!request.queryParameters.token) {
     return getQuickResponse(400, 'Missing "token" query parameter');
@@ -58,15 +57,26 @@ export const webtrigger = async (request: WebTriggerRequest): Promise<WebTrigger
     return getQuickResponse(405, 'Method Not Allowed');
   }
 
-  const { script, args } = JSON.parse(request.body) as { script: string; args: Record<string, unknown> | undefined };
-  const { result, error, logs } = await runScript({ script, args });
+  try {
+    const body = JSON.parse(request.body) as { script?: unknown; args?: unknown };
+    const { script, args } = body;
 
-  return Promise.resolve({
-    body: JSON.stringify({
-      result, error, logs,
-    }),
-    headers: { 'Content-Type': ['application/json'] },
-    statusCode: 200,
-    statusText: 'OK',
-  });
+    if (typeof script !== 'string' || script.trim().length === 0) {
+      return getQuickResponse(400, 'Request body must contain a non-empty "script" string');
+    }
+    if (args !== undefined && (typeof args !== 'object' || Array.isArray(args) || args === null)) {
+      return getQuickResponse(400, '"args" must be a plain object if provided');
+    }
+
+    const { result, error, logs } = await runScript({ script, args: args as Record<string, unknown> | undefined });
+
+    return {
+      body: JSON.stringify({ result, error, logs }),
+      headers: { 'Content-Type': ['application/json'] },
+      statusCode: 200,
+      statusText: 'OK',
+    };
+  } catch (error) {
+    return getQuickResponse(400, `Invalid request: ${String(error)}`);
+  }
 };

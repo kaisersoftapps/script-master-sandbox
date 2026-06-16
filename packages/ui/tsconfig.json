@@ -1,10 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
@@ -13,16 +13,10 @@
       "dom.iterable",
       "esnext"
     ],
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
     "removeComments": true,
     "sourceMap": true
   },
   "include": [
-    "./src",
-    "vite.config.ts"
+    "./src"
   ]
 }

@@ -1,9 +1,11 @@
 import api, { authorize, fetch, route } from '@forge/api';
-import * as vm from 'node:vm';
+import * as vm from 'vm';
 
 const MAX_LOGS_PER_INVOCATION = 100;
 
 const MAX_LOG_SIZE = 2048;
+
+const SCRIPT_TIMEOUT_MS = 55_000;
 
 enum LogLevel {
   info = 'info',
@@ -20,14 +22,16 @@ interface LogMessage {
 
 interface RunScriptResult {
   result?: unknown;
-  error?: unknown;
+  error?: string;
   logs: LogMessage[];
 }
 
-const addLog = (logs: LogMessage[], level: LogLevel, args: unknown) => {
-  const details = typeof args === 'number' || typeof args === 'string' || typeof args === 'boolean' || typeof args === 'undefined' || args instanceof Error
-    ? String(args)
-    : JSON.stringify(args);
+const addLog = (logs: LogMessage[], level: LogLevel, args: unknown[]) => {
+  const details = args.map(arg =>
+    typeof arg === 'number' || typeof arg === 'string' || typeof arg === 'boolean' || typeof arg === 'undefined' || arg instanceof Error
+      ? String(arg)
+      : JSON.stringify(arg),
+  ).join(' ');
 
   if (logs.length < MAX_LOGS_PER_INVOCATION) logs.push({
     level,
@@ -88,12 +92,13 @@ export const runScript = async ({ script, args }: { script: string; args: Record
       URLSearchParams,
     };
 
-    const result = await vm.runInNewContext(wrappedScript, forgeGlobalsContext) as unknown;
+    const result = await vm.runInNewContext(wrappedScript, forgeGlobalsContext, { timeout: SCRIPT_TIMEOUT_MS }) as unknown;
 
     return { result, logs };
   } catch (error) {
-    addLog(logs, LogLevel.error, String(error));
+    const errorMessage = String(error);
+    addLog(logs, LogLevel.error, [errorMessage]);
 
-    return { error, logs };
+    return { error: errorMessage, logs };
   }
 };
