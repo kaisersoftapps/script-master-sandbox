@@ -18,7 +18,10 @@ export const useWeTriggerUrl = () => {
   useEffect(() => {
     void (async () => {
       try {
-        const { data, error } = await invoke<GetWebTriggerResponse>('GetWebTriggerUrl');
+        // @forge/bridge v6 types invoke's result as InvokeResponse<T> (a union with
+        // the metadata-wrapped form). We don't request metadata, so the runtime value
+        // is the resolver body itself; narrow the type back to it.
+        const { data, error } = await invoke<GetWebTriggerResponse>('GetWebTriggerUrl') as GetWebTriggerResponse;
         if (error) throw new Error(error);
 
         setState(prevState => ({ ...prevState, weTriggerUrl: data, isLoading: false }));
@@ -32,7 +35,7 @@ export const useWeTriggerUrl = () => {
     try {
       setState(prevState => ({ ...prevState, isLoading: true, weTriggerUrl: undefined, error: undefined }));
 
-      const { data, error } = await invoke<GetWebTriggerResponse>('RecreateWebTriggerUrl');
+      const { data, error } = await invoke<GetWebTriggerResponse>('RecreateWebTriggerUrl') as GetWebTriggerResponse;
       if (error) throw new Error(error);
 
       setState(prevState => ({ ...prevState, weTriggerUrl: data, isLoading: false }));

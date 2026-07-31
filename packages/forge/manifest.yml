@@ -138,8 +138,7 @@ permissions:
         - "*" # Client can fetch from any URL
 # App configuration and runtime settings
 app:
-  # Unique app identifier in Atlassian ecosystem
-  id: ari:cloud:ecosystem::app/32d0b242-3b4a-4c0c-a0b6-0b44e8280724
-  # Runtime environment configuration
+  # id: ari:cloud:ecosystem::app/c932eb85-f78f-463e-8b7c-6b5ae2623687 # apportunity
+  id: ari:cloud:ecosystem::app/32d0b242-3b4a-4c0c-a0b6-0b44e8280724 # kaiser
   runtime:
-    name: nodejs22.x # Node.js version 22
+    name: nodejs22.x

@@ -155,7 +155,7 @@ export const App = () => {
         </Flex>
 
         {isLoading && (
-          <Skeleton width="100%" height="50px" borderRadius="5px" />
+          <Skeleton width="100%" height="50px" borderRadius="var(--ds-radius-medium)" />
         )}
         {!isLoading && (
           <Flex
